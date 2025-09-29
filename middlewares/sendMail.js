@@ -1,6 +1,6 @@
 import { createTransport } from "nodemailer";
 const sendMail = async (email, subject, data) => {
-  
+  try{
   const transport = createTransport({
     host: "smtp.gmail.com",
     port: 465,
@@ -108,6 +108,12 @@ const sendMail = async (email, subject, data) => {
     subject,
     html,
   });
+  console.log("Email sent to",email)
+}catch(err){
+console.error("❌ Email sending failed:", err.message);
+    throw new Error("Email delivery failed");
+
+}
 };
 
 export default sendMail;
