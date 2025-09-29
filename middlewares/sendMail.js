@@ -7,6 +7,7 @@ const sendMail = async (email, subject, data) => {
       user: process.env.Gmail,
       pass: process.env.Password,
     },
+    secure:true
   });
   const html = `<!DOCTYPE html>
 <html lang="en">
