@@ -12,11 +12,11 @@ export const register = TryCatch(async (req, res) => {
     });
   }
   const hashPassword = await bcrypt.hash(password, 10);
-  user = {
+  user = new User({
     name,
     email,
     password: hashPassword,
-  };
+  });
   const otp = Math.floor(Math.random() * 1000000);
   const activationToken = jwt.sign(
     {
